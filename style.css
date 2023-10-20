@@ -1,0 +1,21 @@
+body
+{
+    background-position: center;
+    background-size: cover;
+}
+.heading
+{
+    font-size: 23px; 
+    width: 100%;
+    margin: 0px;
+    border-radius: 0px;
+}
+#status
+{
+    font-size: 18px;
+}
+canvas
+{
+    box-shadow: 10px 10px 10px rgb(97, 97, 97);
+    border-radius: 15px;
+}
