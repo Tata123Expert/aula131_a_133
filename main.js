@@ -1,5 +1,6 @@
 img = "";
 modelStatus = "";
+objects = [];
 
 function setup()
 {
@@ -22,31 +23,32 @@ function gotResult(error, results)
     {
         console.error(error);
     }
-    else
-    {
         console.log(results);
-    }
+        objects = results;
 }
 
 function preload()
 {
-    img = loadImage('dog_cat.jpg')
+    img = loadImage('dog_cat.jpg');
 }
 
 function draw()
 {
     image(img, 0, 0, 640, 420);
-    fill("#fddd23");
-    text("Cachorro", 45, 75);
-    noFill();
-    stroke("#fddd23");
-    rect(30, 60, 450, 350);
 
-    fill("#44abff");
-    text("Gato", 320, 120);
-    noFill();
-    stroke("#44abff");
-    rect(300, 90, 270, 320);
+    if(modelStatus != "")
+    {
+        for(i = 0; i < objects.length; i++)
+        {
+            document.getElementById("status").innerHTML = "Status: Objeto (s) Detectado (s)!";
+            fill("#fddd23");
+            percent = floor(objects[i].confidence * 100);
+            text(objects[i].label + " " + percent + "%", objects[i].x + 15, objects[i].y + 15);
+            noFill();
+            stroke("#fddd23");
+            rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+        }
+    }
 }
 
 
